@@ -38,13 +38,13 @@ def example_post(request):
 
 @csrf_exempt
 def fib(request):
-	log = []
 	jsob = {"startNumber": 0, "length": 10}
+	log = []
 	if request.method == "POST":
 		try:
 			data = request.POST["data"]
-			recieved = json.loads(data)
-			jsob.update(recieved)
+			received = json.loads(data)
+			jsob.update(received)
 
 
 			startNumber = int(jsob["startNumber"])
@@ -63,7 +63,7 @@ def fib(request):
 
 
 
-			return JsonResponse({'fib': numarray})
+			return JsonResponse({"fib": numarray})
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
@@ -71,6 +71,6 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("ONLY POST REQUESTS")
+		#return HttpResponse("ONLY POST REQUESTS")
 
-		#return JsonResponse(jsob)
+		return JsonResponse(jsob)

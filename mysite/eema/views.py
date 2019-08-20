@@ -12,41 +12,33 @@ from tkinter import *
 @csrf_exempt
 def shape(request):
 	log = []
-	jsob = {"startNumber": 0, "length": 10}
+	jsob = {"number": 12, "index": 2}
 	if request.method == "POST":
 		try:
 			data = request.POST["data"]
-			recieved = json.loads(data)
-			jsob.update(recieved)
+			received = json.loads(data)
+			jsob.update(received)
 
+			'''topLeft = int(jsob["topLeft"])
+			bottomRight = int(jsob["bottomRight"])
 
-			class Example(Frame):
+			root = Tk()
+			root.geometry('300x300')
 
-				def __init__(self):
-					super().__init__()
+			c = Canvas (root, height=300, width=300, bg='white')
 
-					self.initUI()
+			l = c.create_line(topLeft, topLeft, bottomRight, bottomRight)
 
-				def initUI(self):
+			c.pack()
 
-					self.master.title("Shapes")
-					self.pack(fill=BOTH, expand=1)
+			root.mainloop()'''
 
-					canvas = Canvas(self)
-					canvas.create_oval(10, 10, 80, 80, outline='black', fill='red', width=5)
+			number = int(jsob["number"])
+			index = int(jsob["index"])
 
-					canvas.pack(fill=BOTH, expand=1)
-
-			def main():
-
-				root = Tk()
-				ex = Example()
-				root.geometry("330x220+300+300")
-				root.mainloop()
-
-			if __name__ == '__main__':
-				main()
 			
+
+
 
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -55,6 +47,6 @@ def shape(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("ONLY POST REQUESTS")
+		#return HttpResponse("ONLY POST REQUESTS")
 
-		#return JsonResponse(jsob)
+		return JsonResponse(jsob)
