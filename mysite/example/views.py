@@ -72,3 +72,5 @@ def fib(request):
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
 		return HttpResponse("ONLY POST REQUESTS")
+
+		#return JsonResponse(jsob)
