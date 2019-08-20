@@ -47,8 +47,8 @@ def fib(request):
 			jsob.update(recieved)
 
 
-			startNumber = int(jsob['startNumber'])
-			length = int(jsob['length'])
+			startNumber = int(jsob["startNumber"])
+			length = int(jsob["length"])
 			loop = range(length)
 
 			numarray = []
@@ -56,7 +56,7 @@ def fib(request):
 			fibno = startNumber
 			addno = 1
 
-			for i in loop:
+			for l in loop:
 				numarray.append(fibno)
 				fibno = fibno + addno
 				addno = fibno - addno

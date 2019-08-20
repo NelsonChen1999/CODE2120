@@ -1,10 +1,11 @@
+
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import json
 from .models import *
 import os,sys
-from tkinter import Tk, Canvas, Frame, BOTH
+from tkinter import *
 
 # Create your views here.
 
@@ -17,6 +18,7 @@ def shape(request):
 			data = request.POST["data"]
 			recieved = json.loads(data)
 			jsob.update(recieved)
+
 
 			class Example(Frame):
 
@@ -31,7 +33,7 @@ def shape(request):
 					self.pack(fill=BOTH, expand=1)
 
 					canvas = Canvas(self)
-					canvas.create_oval(10, 10, 80, 80, outline='black', fill='red', width=5
+					canvas.create_oval(10, 10, 80, 80, outline='black', fill='red', width=5)
 
 					canvas.pack(fill=BOTH, expand=1)
 
@@ -46,7 +48,6 @@ def shape(request):
 				main()
 			
 
-			return JsonResponse({'shape': numarray})
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
