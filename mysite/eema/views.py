@@ -10,7 +10,7 @@ from tkinter import *
 # Create your views here.
 
 @csrf_exempt
-def shape(request):
+def ligma(request):
 	log = []
 	jsob = {"number": 12, "index": 2}
 	if request.method == "POST":
@@ -36,8 +36,9 @@ def shape(request):
 			number = int(jsob["number"])
 			index = int(jsob["index"])
 
-			
+			answer = number**index
 
+			return JsonResponse({"Answer": answer})
 
 
 		except Exception as e:

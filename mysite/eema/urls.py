@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-	path(r'shape/', views.shape),
+	path(r'ligma/', views.ligma),
 ]
