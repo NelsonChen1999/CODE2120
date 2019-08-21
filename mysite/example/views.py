@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import json
 from .models import *
-import os,sys
+import os, sys
 
 # Create your views here.
 
@@ -61,9 +61,8 @@ def fib(request):
 				fibno = fibno + addno
 				addno = fibno - addno
 
-
-
-			return JsonResponse({"fib": numarray})
+			return JsonResponse({"fib":numarray})
+		
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__

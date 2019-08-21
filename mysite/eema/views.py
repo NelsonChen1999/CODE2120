@@ -4,15 +4,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import json
 from .models import *
-import os,sys
+import os, sys
 from tkinter import *
+import math
 
 # Create your views here.
 
 @csrf_exempt
 def ligma(request):
 	log = []
-	jsob = {"number": 12, "index": 2}
+	#jsob = {"number": 12, "index": 2}
+	#jsob = {"topLeft": 50, "bottomRight": 250}
+	jsob = {"shape": "circle", "radius": 7}
 	if request.method == "POST":
 		try:
 			data = request.POST["data"]
@@ -33,13 +36,26 @@ def ligma(request):
 
 			root.mainloop()'''
 
-			number = int(jsob["number"])
+
+
+			'''number = int(jsob["number"])
 			index = int(jsob["index"])
 
 			answer = number**index
 
-			return JsonResponse({"Answer": answer})
+			return JsonResponse({"Answer": answer})'''
 
+			shape = str(jsob["shape"])
+			r = int(jsob["radius"])
+			shape.lower()
+			if shape == "circle":
+				a = math.pi*r*r
+			elif shape == "sphere":
+				a = 4*math.pi*r*r
+			elif shape =="circumference":
+				a = 2*math.pi*r
+
+			return a
 
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
