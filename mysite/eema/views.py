@@ -55,7 +55,8 @@ def ligma(request):
 			elif shape =="circumference":
 				a = 2*math.pi*r
 
-			return a
+			return JsonResponse({"Area":a})
+		
 
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
