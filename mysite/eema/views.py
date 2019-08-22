@@ -13,7 +13,6 @@ import math
 @csrf_exempt
 def ligma(request):
 	log = []
-	#jsob = {"number": 12, "index": 2}
 	#jsob = {"topLeft": 50, "bottomRight": 250}
 	jsob = {"shape": "circle", "radius": 7}
 	if request.method == "POST":
@@ -21,29 +20,6 @@ def ligma(request):
 			data = request.POST["data"]
 			received = json.loads(data)
 			jsob.update(received)
-
-			'''topLeft = int(jsob["topLeft"])
-			bottomRight = int(jsob["bottomRight"])
-
-			root = Tk()
-			root.geometry('300x300')
-
-			c = Canvas (root, height=300, width=300, bg='white')
-
-			l = c.create_line(topLeft, topLeft, bottomRight, bottomRight)
-
-			c.pack()
-
-			root.mainloop()'''
-
-
-
-			'''number = int(jsob["number"])
-			index = int(jsob["index"])
-
-			answer = number**index
-
-			return JsonResponse({"Answer": answer})'''
 
 			shape = str(jsob["shape"])
 			r = int(jsob["radius"])
@@ -57,7 +33,6 @@ def ligma(request):
 
 			return JsonResponse({"Area":a})
 		
-
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
